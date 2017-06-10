@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<ui:composition template="Loyout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml" xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+	<ui:define name="titulo">Login</ui:define>
+	<ui:define name="corpo">
+	<h1>Login Usuario</h1>
+		<center>
+			<h:form id="Cadastro">
+			<p:growl id="messages" showDetail="true" />
+				<p:fieldset id="formCadastro">
+					<h:panelGrid columns="2">
+						<p:outputLabel value="Login: " for="emailCadastro" />
+						<p:inputText value="#{controleLogin.nomeUsuario}"
+							id="emailCadastro" />
+						<p:outputLabel value="Senha: " for="senhaCadastro" />
+						<p:password value="#{controleLogin.senha}" id="senhaCadastro" />
+						<p:commandButton value="Salva"
+							action="#{controleLogin.efetuarLogin}" update="Cadastro" />	
+					</h:panelGrid>
+				</p:fieldset>
+				
+			</h:form>
+		</center>
+	</ui:define>
+</ui:composition>
