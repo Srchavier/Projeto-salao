@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<ui:composition template="../Loyout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml" xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+	<ui:define name="titulo">Cadastra Usuario</ui:define>
+	<ui:define name="content">
+		<h1>Listar grupo</h1>
+		<h:form>
+			<p:growl id="messages" showDetail="true" />
+			<p:dataTable var="obj" value="#{CadastroBean.listTodos()}" rows="10"
+				paginator="true">
+				<p:column headerText="id" sortBy="#{obj.id}"
+					filterBy="#{obj.id}">
+					<h:outputText value="#{obj.id}" />
+				</p:column>
+				<p:column headerText="Primeiro nome" sortBy="#{obj.firstName}"
+					filterBy="#{obj.firstName}">
+					<h:outputText value="#{obj.firstName}" />
+				</p:column>
+				<p:column headerText="Ultimo nome" sortBy="#{obj.lastName}"
+					filterBy="#{obj.lastName}">
+					<h:outputText value="#{obj.lastName}" />
+				</p:column>
+			
+				<p:column headerText="Setor" sortBy="#{obj.setor.nome}"
+					filterBy="#{obj.setor.nome}">
+					<h:outputText value="#{obj.setor.nome}" />
+				</p:column>
+				<p:column headerText="Alterar">
+					<h:commandLink value="Alterar"
+						action="#{CadastroBean.alterar(obj)}" />
+				</p:column>
+				<p:column headerText="Excluir">
+					<h:commandLink value="Excluir"
+						action="#{CadastroBean.excluir(obj)}"
+						onclick="if(!confirm('Confirma a exclusao do funcionario'))return false" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>

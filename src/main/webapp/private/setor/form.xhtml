@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<ui:composition template="../Loyout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml" xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+	<ui:define name="titulo">Cadastra Usuario</ui:define>
+	<ui:define name="content">
+		<h1>Novo grupo</h1>
+		<h:form>
+			<p:growl id="messages" showDetail="true" />
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Nome" />
+				<p:inputText value="#{setorBean.objeto.nome}" />
+				<p:commandButton value="Cancelar" action="#{setorBean.cancel()}" />
+				<p:commandButton value="Salvar" action="#{setorBean.save}" />
+			</p:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
