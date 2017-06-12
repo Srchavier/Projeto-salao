@@ -31,6 +31,18 @@ public class FiltroSeguranca implements Filter {
 
 		if (sessao != null) {
 			person = (Person) sessao.getAttribute("usuarioLogado");
+			if (person != null) {
+				HttpServletRequest httpRequest = (HttpServletRequest) request;
+				HttpServletResponse httpResponse = (HttpServletResponse) response;
+				String pagina = httpRequest.getRequestURL().toString();
+				if (pagina.contains("/private/employee") || pagina.contains("/private/setor")) {
+					String contextPath = ((HttpServletRequest) request).getContextPath();
+
+					if (!person.getSetor().getNome().equals("Administrativo") && person.getNomeUsuario() != null) {
+						httpResponse.sendRedirect(contextPath + "/naoAutorizado.xhtml");
+					}
+				}
+			}
 		}
 
 		if (person != null) {

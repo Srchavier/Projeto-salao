@@ -22,6 +22,7 @@ import br.com.agedsalao.dao.agendamentoDAO;
 import br.com.agedsalao.entity.Agendamento;
 import br.com.agedsalao.entity.AgendamentoSchedule;
 import br.com.agedsalao.entity.Person;
+import br.com.agedsalao.filtresegurance.SessionContext;
 
 @ManagedBean
 @ViewScoped
@@ -50,6 +51,7 @@ public class ScheduleView implements Serializable {
 		personDAO = new PersonDAO();
 		convertPerson = new ConverterPerson();
 		buscarTodos();
+		
 	}
 
 	public void prepararEvento() {
@@ -86,12 +88,12 @@ public class ScheduleView implements Serializable {
 
 	private void buscarTodos() {
 		agenda = agendamentoDAO.listar();
-
 		eventModel.clear();
 		agenda.forEach(ag -> {
 			eventModel.addEvent(ag);
 		});
 	}
+	
 
 	public void excluir(){
 		if(event.getData() !=null){
@@ -106,6 +108,7 @@ public class ScheduleView implements Serializable {
 	public List<Person> listarSetor() {
 		return  personDAO.findAll();
 	}
+	
 
 	public void onEventSelect(SelectEvent selectEvent) {
 		event = (AgendamentoSchedule) selectEvent.getObject();

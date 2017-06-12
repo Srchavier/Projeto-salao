@@ -23,7 +23,7 @@ public class agendamentoDAO extends GenericDAO<Agendamento> {
 	public List<AgendamentoSchedule> listar() {
 		Person list=(Person) SessionContext.getInstance().getAttribute("usuarioLogado");
 		EntityManager manager = getEntityManager();
-		List<Agendamento> lista = manager.createQuery("FROM Agendamento  where id="+ list.getId() , Agendamento.class).getResultList();
+		List<Agendamento> lista = manager.createQuery("FROM Agendamento  where persons="+ list.getId() , Agendamento.class).getResultList();
 		manager.close();
 		List<AgendamentoSchedule> listaSchedule = new ArrayList<>();
 		lista.forEach(ag -> {
