@@ -20,13 +20,13 @@
 					<p:inputText value="#{CadastroBean.person.firstName}"
 						required="true" id="primeiroNomeCadastro"
 						requiredMessage="Campo é obrigatório."
-						validatorMessage="Informe o seu nome de 5 a 20 caracteres." />
+						validatorMessage="Informe o seu nome de 5 a 60 caracteres." />
 						
 					<p:outputLabel value="Ultimo nome: " for="segundoNomeCadastro" />
 					<p:inputText value="#{CadastroBean.person.lastName}"
 						required="true" id="segundoNomeCadastro"
 						requiredMessage="Campo é obrigatório."
-						validatorMessage="Informe o seu nome de 5 a 20 caracteres." />
+						validatorMessage="Informe o seu nome de 5 a 60 caracteres." />
 
 					<p:outputLabel value="Cpf: " for="cpfCadastro" />
 					<p:inputText value="#{CadastroBean.person.cpf}" onkeydown="Mascara(this,Cpf);" maxlength="14"
