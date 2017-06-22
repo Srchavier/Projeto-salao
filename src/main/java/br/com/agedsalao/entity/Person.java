@@ -68,7 +68,7 @@ public class Person extends AbstractPersistable<Long> {
 	@NotEmpty(message = "Usuario deve ser informando")
 	@Length(max = 20, min = 5)
 	@Size(min = 5, max = 20)
-	@Column(name = "NOME_USUARIO", nullable = false, length = 20)
+	@Column(name = "NOME_USUARIO", nullable = false, length = 20,unique=true)
 	private String nomeUsuario;
 	
 	@Temporal(TemporalType.DATE)
