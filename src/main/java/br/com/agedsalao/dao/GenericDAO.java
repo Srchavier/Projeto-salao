@@ -250,10 +250,8 @@ public abstract class GenericDAO<T extends Serializable> {
 					.setParameter("nomeUsuario", nomeUsuario.toUpperCase()).setParameter("senha", senha.toUpperCase())
 					.getSingleResult();
 			pessoa.setSenha("");
-			UtilMensagens.mensagemInformacao("Login sucesso");
 			return pessoa;
 		} catch (NoResultException e) {
-			UtilMensagens.mensagemErro("Erro ao remover grupo" + UtilErros.getMensagemErro(e));
 			return null;
 		}
 	}
