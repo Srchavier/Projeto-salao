@@ -19,6 +19,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -68,12 +70,13 @@ public class Person extends AbstractPersistable<Long> {
 	@Size(min = 5, max = 20)
 	@Column(name = "NOME_USUARIO", nullable = false, length = 20)
 	private String nomeUsuario;
-
+	
+	@Temporal(TemporalType.DATE)
 	@Column(name = "DATA_NASCIMENTO")
 	private Calendar dataNascimento;
-
+	
 	@Column(name = "data_cadastro")
-	private Date dataCadastro;
+	private LocalDate dataCadastro;
 
 	@NotEmpty
 	@Size(max = 40)
@@ -135,11 +138,11 @@ public class Person extends AbstractPersistable<Long> {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public Date getDataCadastro() {
+	public LocalDate getDataCadastro() {
 		return dataCadastro;
 	}
 
-	public void setDataCadastro(Date dataCadastro) {
+	public void setDataCadastro(LocalDate dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
 

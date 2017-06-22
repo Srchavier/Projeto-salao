@@ -157,20 +157,12 @@ public abstract class GenericDAO<T extends Serializable> {
 													// passa o objeto ja criando
 													// do tipo entyttimanager
 		manager.getTransaction().begin();// inicia a transaçao
-
-		Query query = manager.createQuery("from " + aClass.getSimpleName());// pega
-																			// o
-																			// nome
-																			// da
-																			// classe
-																			// para
-																			// consulta
+		Query query = manager.createQuery("from " + aClass.getSimpleName());
 		// precisa de uma query como paramento
 		List<T> entities = query.getResultList();// recupera os resultandos
 		// retorno da lista
 		manager.getTransaction().commit();// vamos commint a transaçao
 		manager.close();// encerra e libera da memoria
-
 		return entities;
 	}
 
@@ -182,10 +174,7 @@ public abstract class GenericDAO<T extends Serializable> {
 	 * @return consulta
 	 */
 	@SuppressWarnings("unchecked")
-	public List<T> find(String jpql, Object... params) {// lista baseada em
-														// paramento ,object os
-														// valores referente a
-														// consulta
+	public List<T> find(String jpql, Object... params) {
 		EntityManager manager = getEntityManager();
 		manager.getTransaction().begin();
 
@@ -201,8 +190,6 @@ public abstract class GenericDAO<T extends Serializable> {
 		}
 
 		List<T> entities = query.getResultList();// returna uma lista
-
-		manager.getTransaction().commit();
 		manager.close();
 
 		return entities;
@@ -236,8 +223,6 @@ public abstract class GenericDAO<T extends Serializable> {
 		}
 
 		T entity = (T) query.getSingleResult();// retorna uma entidade
-
-		manager.getTransaction().commit();
 		manager.close();
 
 		return entity;
@@ -250,20 +235,9 @@ public abstract class GenericDAO<T extends Serializable> {
 	public long count() {
 		EntityManager manager = getEntityManager();
 		manager.getTransaction().begin();
-
-		Query query = manager.createQuery("select count(c) from " + aClass.getSimpleName() + " c");// consulta
-																									// pelo
-																									// nome
-																									// da
-																									// classe
-																									// getSimpleName
-
-		long count = (Long) query.getSingleResult();// passa o resultando para
-													// long
-
-		manager.getTransaction().commit();
+		Query query = manager.createQuery("select count(c) from " + aClass.getSimpleName() + " c");
+		long count = (Long) query.getSingleResult();
 		manager.close();
-
 		return count;
 	}
 
