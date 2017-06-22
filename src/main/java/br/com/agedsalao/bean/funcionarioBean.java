@@ -38,6 +38,7 @@ public class funcionarioBean {
 	}
 
 	public String adicionar() {
+		person.setDataCadastro(LocalDate.now());
 		if (personDAO.save(person)) {
 			return "listar";
 		} else {

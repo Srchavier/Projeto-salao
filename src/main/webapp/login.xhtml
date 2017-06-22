@@ -7,23 +7,32 @@
 
 	<ui:define name="titulo">Login</ui:define>
 	<ui:define name="corpo">
-	<h1>Login Usuario</h1>
+		<h1>Login Usuario</h1>
 		<center>
 			<h:form id="Cadastro">
-			<p:growl id="messages" showDetail="true" />
+				<p:messages showDetail="false" showSummary="true" autoUpdate="true" />
 				<p:fieldset id="formCadastro">
 					<h:panelGrid columns="2">
 						<p:outputLabel value="Login: " for="emailCadastro" />
 						<p:inputText value="#{controleLogin.nomeUsuario}"
-							id="emailCadastro"  required="true" > <f:validateRequired /></p:inputText>
+							id="emailCadastro" required="true"
+							requiredMessage="Informe o seu nome."
+							validatorMessage="Informe o seu nome de 3 a 20 caracteres.">
+							<f:validateLength minimum="3" />
+						</p:inputText>
 						<p:outputLabel value="Senha: " for="senhaCadastro" />
-						<p:password value="#{controleLogin.senha}" id="senhaCadastro" required="true"> <f:validateRequired /></p:password>
+						<p:password value="#{controleLogin.senha}" id="senhaCadastro"
+							required="true"
+							requiredMessage="Informe o seu senha."
+							validatorMessage="Informe o seu nome de 3 a 120 caracteres.">
+							<f:validateLength minimum="3" />
+						</p:password>
 						<p:commandButton value="Login"
-							action="#{controleLogin.efetuarLogin}" update="Cadastro" />	
+							action="#{controleLogin.efetuarLogin}" update="Cadastro" />
 					</h:panelGrid>
-					
+
 				</p:fieldset>
-				
+
 			</h:form>
 		</center>
 	</ui:define>
