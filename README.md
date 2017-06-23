@@ -1,10 +1,13 @@
 ###-------------------------------------------- Configuraçao do Banco de Dados------------------------
                                                     
-                     1° primeiramente vai ate o arquivo "persistence" linha "9" e coloque um nome para banco de dados ou deixe o nome que esta.Veja tambem ser seu banco tem senha ou nao ai nao sta com senha.                          
+                     1° primeiramente vai ate o arquivo "persistence" linha "9" e coloque um nome para 
+                     "value="jdbc:mysql://localhost/BdProjecao"" mude o nome que e "BdProjecao" ou deixe
+                     assim banco de dados ou deixe o nome que esta.Veja tambem ser seu banco tem senha ou 
+                     username ser  nao deixa assim.                          
                      2°Abra o MYSQL.                                                                
                      3°Crie um conexao.                                                                                                                
                      5°Crie um banco de dados igual voce colocou no persistence.
-                     6°Gera as tabelas automaticas.
+                     6°As tabelas sao automaticas.
                      
 ###-------------------------------------------- Configuraçao Primeiro Usuario------------------------
                                                     
