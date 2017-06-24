@@ -204,10 +204,7 @@ public abstract class GenericDAO<T extends Serializable> {
 	 * @return consulta
 	 */
 	@SuppressWarnings("unchecked")
-	public T findOne(String jpql, Object... params) {// lista baseada em
-														// paramento ,object os
-														// valores referente a
-														// consulta
+	public T findOne(String jpql, Object... params) {
 		EntityManager manager = getEntityManager();
 		manager.getTransaction().begin();
 

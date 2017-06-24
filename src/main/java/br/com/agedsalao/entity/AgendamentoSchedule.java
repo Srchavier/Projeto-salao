@@ -120,4 +120,11 @@ public class AgendamentoSchedule implements ScheduleEvent, Serializable {
 		this.description = description;
 	}
 
+	@Override
+	public String toString() {
+		return super.toString();
+	}
+	
+	
+
 }

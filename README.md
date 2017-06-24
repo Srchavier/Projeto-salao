@@ -1,24 +1,24 @@
 ###-------------------------------------------- ConfiguraÃ§ao do Banco de Dados------------------------
                                                     
-                     1Â° primeiramente vai ate o arquivo "persistence" linha "9" e coloque um nome para 
+                     1° primeiramente vai ate o arquivo "persistence" linha "9" e coloque um nome para 
                      banco nesse local"value="jdbc:mysql://localhost/BdProjecao"" mude o nome que é 
                      "BdProjecao" ou deixe assim o nome que esta.Veja tambem ser seu banco tem senha ou 
                      username ser nao deixa assim.                          
-                     2Â°Abra o MYSQL.                                                                
-                     3Â°Crie um conexao.                                                                                                                
-                     5Â°Crie um banco de dados igual voce colocou no persistence "BdProjecao".
-                     6Â°As tabelas sao automaticas.
+                     2°Abra o MYSQL.                                                                
+                     3°Crie um conexao.                                                                                                                
+                     5°Crie um banco de dados igual voce colocou no persistence "BdProjecao".
+                     6°As tabelas sao geradas automaticamente.
                      
-###-------------------------------------------- ConfiguraÃ§ao Primeiro Usuario------------------------
+###-------------------------------------------- Configuracao Primeiro Usuario------------------------
                                                     
-                     1Â° primeiramente vai ate o arquivo  src\main\webapp\WEB-INF\web.xml.                   
-                     2Â°vai ate a linha <url-pattern>/private/ks*</url-pattern> e modifique deixando assim.                                                            
-                     3Â°execute o sevidor.                                                         
-                     5Â°vai ate o /projetoAgendamento/private/setor/listar.xhtml pelo navegador.
-                     6Â°Cadastre um Setor com o Nome "Administrativo" sem aspa.
-                     7Â°vai ate o /projetoAgendamento/private/employee/cadastroPessoa.xhtml
-                     8Â°cadastre o primeiro usuario com o setor "Administrativo" sem aspa.
-                     9Â°Salve
-                     10Â°Vai ate a linha <url-pattern>/private/*</url-pattern> e modifique deixando assim 
+                     1° primeiramente vai ate o arquivo  src\main\webapp\WEB-INF\web.xml.                   
+                     2°vai ate a linha <url-pattern>/private/ks*</url-pattern> e modifique deixando assim.                                                            
+                     3°execute o sevidor.                                                         
+                     5°vai ate o /projetoAgendamento/private/setor/listar.xhtml pelo navegador.
+                     6°Cadastre um Setor com o Nome "Administrativo" sem aspa.
+                     7°vai ate o /projetoAgendamento/private/employee/cadastroPessoa.xhtml
+                     8°cadastre o primeiro usuario com o setor "Administrativo" sem aspa.
+                     9°Salve
+                     10°Vai ate a linha <url-pattern>/private/*</url-pattern> e modifique deixando assim 
                      voltando ao normal.
-                     11Â°salve tudo e esta pronto.
+                     11°salve tudo e esta pronto.

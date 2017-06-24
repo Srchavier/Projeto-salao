@@ -9,8 +9,8 @@
 	<ui:define name="content">
 
 		<h:form>
-			<p:growl id="messages" showDetail="true" />
-
+			<p:messages id="messages" showDetail="false" showSummary="true"
+				autoUpdate="true" />
 			<h:panelGrid columnClasses="value" id="atualizar">
 				<h3 style="margin-top: 0">Agenda</h3>
 
@@ -54,11 +54,11 @@
 
 					<p:outputLabel for="from" value="Inicio do Serviços:" />
 					<p:calendar id="from" value="#{scheduleView.event.startDate}"
-						timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm" />
+						timeZone="GMT-3" pattern="dd/MM/yyyy HH:mm" />
 
 					<p:outputLabel for="to" value="Fim do Serviços:" />
 					<p:calendar id="to" value="#{scheduleView.event.endDate}"
-						timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm" />
+						timeZone="GMT-3" pattern="dd/MM/yyyy HH:mm" />
 
 
 					<p:outputLabel for="allDay" value="Marcaçao o Dia Todo ?:" />
@@ -68,10 +68,11 @@
 					<p:commandButton value="Excluir"
 						actionListener="#{scheduleView.excluir}"
 						oncomplete="PF('myschedule').update();PF('eventDialog').hide();"
-						update="atualizar" />
+						update="atualizar messages" />
 					<p:commandButton id="addButton" value="Marca"
 						actionListener="#{scheduleView.addEvent}"
-						oncomplete="PF('myschedule').update();PF('eventDialog').hide();" />
+						oncomplete="PF('myschedule').update();PF('eventDialog').hide();"
+						update="messages" />
 				</h:panelGrid>
 			</p:dialog>
 		</h:form>

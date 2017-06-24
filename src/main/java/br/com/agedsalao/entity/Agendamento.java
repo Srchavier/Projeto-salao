@@ -17,7 +17,7 @@ public class Agendamento extends AbstractPersistable<Long> {
 	@Column(name = "NOME" , length=40)
 	private String nome;
 	
-	@Column(name="DATEINICIL")
+	@Column(name="DATEINICIL",nullable=true)
 	private Date dateInicil;
 	
 	@Column(name="DATEFIM")
@@ -76,15 +76,5 @@ public class Agendamento extends AbstractPersistable<Long> {
 		// TODO Auto-generated method stub
 		super.setId(id);
 	}
-
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return nome;
-	}
-	
-	
-	
-	
 	
 }

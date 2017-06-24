@@ -1,6 +1,7 @@
 package br.com.agedsalao.bean;
 
 import java.io.Serializable;
+import java.text.ParseException;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -10,6 +11,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DefaultScheduleModel;
 import org.primefaces.model.ScheduleEvent;
@@ -22,7 +24,6 @@ import br.com.agedsalao.dao.agendamentoDAO;
 import br.com.agedsalao.entity.Agendamento;
 import br.com.agedsalao.entity.AgendamentoSchedule;
 import br.com.agedsalao.entity.Person;
-import br.com.agedsalao.filtresegurance.SessionContext;
 
 @ManagedBean
 @ViewScoped
@@ -41,7 +42,7 @@ public class ScheduleView implements Serializable {
 	private List<AgendamentoSchedule> agenda;
 
 	private agendamentoDAO agendamentoDAO;
-	
+
 	private PersonDAO personDAO;
 
 	@PostConstruct
@@ -51,7 +52,7 @@ public class ScheduleView implements Serializable {
 		personDAO = new PersonDAO();
 		convertPerson = new ConverterPerson();
 		buscarTodos();
-		
+
 	}
 
 	public void prepararEvento() {
@@ -70,20 +71,30 @@ public class ScheduleView implements Serializable {
 		this.event = event;
 	}
 
-	public void addEvent(ActionEvent actionEvent) {
+	public void addEvent(ActionEvent actionEvent) throws ParseException {
 		if (event.getId() == null) {
+			for (ScheduleEvent eventoAux : eventModel.getEvents()) {
+				if (eventoAux.getStartDate().compareTo(event.getStartDate()) == 0) {
+					if (((AgendamentoSchedule) eventoAux).getPerson().equals(((AgendamentoSchedule) event).getPerson())) {
+						addMessage(new FacesMessage("Ja existe horario!"));
+						return;
+					}
+				}
+			}
 			agendamento = ScheduleEventConverter.getConverter().toAgendamento((AgendamentoSchedule) event);
 			agendamentoDAO.save(agendamento);
-			addMessage(new FacesMessage("Evento salvo com sucesso!"));
+
 		} else {
 			agendamento = ScheduleEventConverter.getConverter().toAgendamento((AgendamentoSchedule) event);
 			agendamentoDAO.save(agendamento);
 		}
+		addMessage(new FacesMessage("Evento salvo com sucesso!"));
 
 		agendamento = new Agendamento();
 		event = new AgendamentoSchedule();
 
 		buscarTodos();
+		
 	}
 
 	private void buscarTodos() {
@@ -93,22 +104,21 @@ public class ScheduleView implements Serializable {
 			eventModel.addEvent(ag);
 		});
 	}
-	
 
-	public void excluir(){
-		if(event.getData() !=null){
-		agendamento = ScheduleEventConverter.getConverter().toAgendamento((AgendamentoSchedule) event);
-		agendamentoDAO.delete(agendamento.getId());
-		}else{
+	public void excluir() {
+		if (event.getData() != null) {
+			agendamento = ScheduleEventConverter.getConverter().toAgendamento((AgendamentoSchedule) event);
+			agendamentoDAO.delete(agendamento.getId());
+		} else {
 			addMessage(new FacesMessage("Nao existe regristo"));
 		}
+		addMessage(new FacesMessage("Excluído com sucesso!"));
 		buscarTodos();
 	}
-	
+
 	public List<Person> listarSetor() {
-		return  personDAO.findAll();
+		return personDAO.findAll();
 	}
-	
 
 	public void onEventSelect(SelectEvent selectEvent) {
 		event = (AgendamentoSchedule) selectEvent.getObject();

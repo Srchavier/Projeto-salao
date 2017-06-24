@@ -22,7 +22,7 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>FiltroSeguranca</filter-name>
-		<url-pattern>/private/*</url-pattern>
+		<url-pattern>/private/s*</url-pattern>
 	</filter-mapping>
 	
 	<welcome-file-list>
