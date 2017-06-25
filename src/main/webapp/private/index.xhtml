@@ -10,7 +10,7 @@
 
 		<h:form>
 			<p:growl id="messages" showDetail="true" />
-			<h:panelGrid columnClasses="value" >
+			<h:panelGrid columnClasses="value">
 				<h3 style="margin-top: 0">Agenda</h3>
 
 				<p:commandButton value="Adicionar um Agedamento"
@@ -35,11 +35,12 @@
 				<h:panelGrid id="eventDetails" columns="2">
 					<p:outputLabel for="title" value="Nome do Cliente:" />
 					<p:inputText id="title" value="#{scheduleView.event.title}"
-						required="true" />
+						required="true" requiredMessage="nome é obrigatório." />
 
 					<p:outputLabel value="Profissional:" />
 					<p:selectOneMenu value="#{scheduleView.event.person}"
-						converter="#{scheduleView.convertPerson}">
+						converter="#{scheduleView.convertPerson}" required="true"
+						requiredMessage="Profissional é obrigatório.">
 						<f:selectItem itemLabel="Selecione profissional"
 							noSelectionOption="true" />
 						<f:selectItems value="#{scheduleView.listarSetor()}" />
@@ -49,15 +50,17 @@
 					<p:inputNumber id="valor" value="#{scheduleView.event.valor}"
 						decimalSeparator="," thousandSeparator="."
 						onkeyup="Mascara(this,Valor)" onkeypress="Mascara(this,Valor)"
-						required="true" />
+						required="true" requiredMessage="Valor é obrigatório." />
 
 					<p:outputLabel for="from" value="Inicio do Serviços:" />
 					<p:calendar id="from" value="#{scheduleView.event.startDate}"
+						required="true" requiredMessage="data inicio é obrigatório."
 						timeZone="GMT-3" pattern="dd/MM/yyyy HH:mm" />
 
 					<p:outputLabel for="to" value="Fim do Serviços:" />
 					<p:calendar id="to" value="#{scheduleView.event.endDate}"
-						timeZone="GMT-3" pattern="dd/MM/yyyy HH:mm" />
+						timeZone="GMT-3" pattern="dd/MM/yyyy HH:mm" required="true"
+						requiredMessage="data fim  é obrigatório." />
 
 
 					<p:outputLabel for="allDay" value="Marcaçao o Dia Todo ?:" />

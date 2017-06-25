@@ -85,7 +85,7 @@ public abstract class GenericDAO<T extends Serializable> {
 			manager.getTransaction().begin();
 			manager.remove(manager.merge(entity));
 			manager.getTransaction().commit();
-			UtilMensagens.mensagemInformacao("removido com sucesso!");
+			UtilMensagens.mensagemInformacao("Excluído com sucesso!!");
 			return true;
 		} catch (Exception e) {
 			if (manager.getTransaction().isActive() == false) {

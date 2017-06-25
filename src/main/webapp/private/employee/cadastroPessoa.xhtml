@@ -20,13 +20,13 @@
 					<p:inputText value="#{CadastroBean.person.firstName}"
 						required="true" id="primeiroNomeCadastro"
 						requiredMessage="Campo é obrigatório."
-						validatorMessage="Informe o seu nome de 5 a 60 caracteres." />
-						
+						validatorMessage="Informe o seu nome de 5 a 30 caracteres." />
+
 					<p:outputLabel value="Ultimo nome: " for="segundoNomeCadastro" />
 					<p:inputText value="#{CadastroBean.person.lastName}"
 						required="true" id="segundoNomeCadastro"
 						requiredMessage="Campo é obrigatório."
-						validatorMessage="Informe o seu nome de 5 a 60 caracteres." />
+						validatorMessage="Informe o seu nome de 5 a 30 caracteres." />
 
 					<p:outputLabel value="Cpf: " for="cpfCadastro" />
 					<p:inputText value="#{CadastroBean.person.cpf}" onkeydown="Mascara(this,Cpf);" maxlength="14"
@@ -34,7 +34,7 @@
 						
 					<p:outputLabel value="Sexo: " for="sexoCadastro" />
 					<p:selectOneMenu id="sexoCadastro"
-						requiredMessage="Campo é obrigatório."
+						requiredMessage="Informe o sexo."
 						value="#{CadastroBean.person.type}">
 						<f:selectItem itemLabel="Selecione" itemValue="" />
 						<f:selectItem itemLabel="Masculino" itemValue="M" />
@@ -42,7 +42,7 @@
 					</p:selectOneMenu>
 					
 					<p:outputLabel value="Data nascimento: " for="dataTime" />
-					<p:inputText  id="dataTime" maxlength="10"
+					<p:inputText  id="dataTime" maxlength="10" requiredMessage="data nascimento obrigatório."
 						value="#{CadastroBean.person.dataNascimento}" 
 						onkeydown="Mascara(this,Data);"
 			         	onkeyup="Mascara(this,Data);" onkeypress="Mascara(this,Data);">
@@ -51,24 +51,24 @@
 					
 					<p:outputLabel value="E-mail: " for="emailCadastro" />
 					<p:inputText value="#{CadastroBean.person.email}" required="true"
-						id="emailCadastro" requiredMessage="Campo é obrigatório."
-						validatorMessage="Informe o seu nome de 5 a 60 caracteres." />
+						id="emailCadastro" requiredMessage="E-mail deve ser informando"
+						/>
+						
 					<p:outputLabel value="Login " for="loginCadastro" />
-					
 					<p:inputText value="#{CadastroBean.person.nomeUsuario}"
 						required="true" id="loginCadastro"
-						requiredMessage="Campo é obrigatório."
-						validatorMessage="Informe o seu nome de 5 a 60 caracteres." />
+						requiredMessage="Nome usuario."
+						validatorMessage="Informe o seu nome de 5 a 20 caracteres." />
 					<p:outputLabel value="Senha: " for="senhaCadastro" />
 					
 					<p:password value="#{CadastroBean.person.senha}" id="senhaCadastro"
-						required="true" requiredMessage="Campo é obrigatório."
+						required="true" requiredMessage="password valido."
 						validatorMessage="Informe o seu nome de 5 a 20 caracteres." />
 				
 					<p:outputLabel value="Setor:" />
 					<p:selectOneMenu value="#{CadastroBean.person.setor}"
-						converter="#{CadastroBean.converterSector}">
-						<f:selectItem itemLabel="Selecione um grupo"
+						converter="#{CadastroBean.converterSector}" required="true" requiredMessage="Setor é obrigatório.">
+						<f:selectItem itemLabel="Selecione um setor"
 							noSelectionOption="true" />
 						<f:selectItems value="#{CadastroBean.listarSetor()}" />
 					</p:selectOneMenu>
@@ -76,7 +76,7 @@
 					<p:outputLabel value="Enderenço:" for="enderencoCadastro" />
 					<p:inputText id="enderencoCadastro" required="true"
 						requiredMessage="Campo é obrigatório."
-						validatorMessage="Informe o seu nome de 5 a 100 caracteres."
+						validatorMessage="Informe o seu nome de 5 a 50 caracteres."
 						value="#{CadastroBean.person.endereco}" />
 						
 					<p:outputLabel value="Cidade: " for="cidadeCadastro"

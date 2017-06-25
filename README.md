@@ -14,9 +14,10 @@
                      1° primeiramente vai ate o arquivo  src\main\webapp\WEB-INF\web.xml.                   
                      2°vai ate a linha <url-pattern>/private/ks*</url-pattern> e modifique deixando assim.                                                            
                      3°execute o sevidor.                                                         
-                     5°vai ate o /projetoAgendamento/private/setor/listar.xhtml pelo navegador.
+                     5°vai ate o http://localhost:8080/projetoAgendamento/private/setor/listar.xhtml pelo 
+                     navegador.
                      6°Cadastre um Setor com o Nome "Administrativo" sem aspa.
-                     7°vai ate o /projetoAgendamento/private/employee/cadastroPessoa.xhtml
+                     7°vai ate o http://localhost:8080/projetoAgendamento/private/employee/cadastroPessoa.xhtml
                      8°cadastre o primeiro usuario com o setor "Administrativo" sem aspa.
                      9°Salve
                      10°Vai ate a linha <url-pattern>/private/*</url-pattern> e modifique deixando assim 

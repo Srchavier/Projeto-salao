@@ -43,18 +43,18 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Table(name = "PERSONS") // versao // 2.1)//adicionar index // indice
 public class Person extends AbstractPersistable<Long> {
 
-	@NotEmpty(message = "Informe o primeiro nome")
+	@NotEmpty(message = "Informe o primeiro nome.")
 	@Size(min = 5, max = 30)
 	@Column(name = "FIRST_NAME", nullable = false, length = 30)
 	private String firstName;
 
-	@NotEmpty(message = "Informe o segundo nome")
-	@Size(min = 5, max = 60)
+	@NotEmpty(message = "Informe o segundo nome.")
+	@Size(min = 5, max = 30)
 	@Column(name = "LAST_NAME", nullable = false, length = 60)
 	private String lastName;
 
-	@NotEmpty(message = "Email deve ser informado")
-	@Size(min = 5, max = 60)
+	
+	@Size(min = 5, max = 30)
 	@Email(message = "Email valido")
 	@Column(name = "EMAIL", nullable = false, unique = true, length = 60)
 	private String email;
@@ -65,11 +65,12 @@ public class Person extends AbstractPersistable<Long> {
 	@Column(name = "SENHA", nullable = false, length = 20)
 	private String senha;
 
-	@NotEmpty(message = "Usuario deve ser informando")
+	@NotEmpty(message = "Usuario deve ser informando.")
 	@Length(max = 20, min = 5)
 	@Size(min = 5, max = 20)
 	@Column(name = "NOME_USUARIO", nullable = false, length = 20,unique=true)
 	private String nomeUsuario;
+	
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "DATA_NASCIMENTO")
@@ -84,11 +85,11 @@ public class Person extends AbstractPersistable<Long> {
 	private String cidade;
 	
 	@NotEmpty
-	@Size(max = 70)
+	@Size(max = 50)
 	@Column(name = "ENDEREÇO", nullable = false)
 	private String endereco;
 	
-	@CPF(message = "Nao pode ser nulo")
+	@CPF(message = "Cpf deve ser valido.")
 	@Column(name = "CPF", nullable = false, unique = true, length = 14)
 	private String cpf;
 	
@@ -96,7 +97,7 @@ public class Person extends AbstractPersistable<Long> {
 	@Column(name = "NUMBER", nullable = false)
 	private String number;
 	
-	@NotNull(message = "Informe o sexo")
+	@NotNull(message = "Informe o sexo.")
 	@Enumerated(EnumType.STRING) // aqui vc coloca o tipo de dados
 	@Column(name = "TYPE_SEXO")
 	private TypeSexo type;

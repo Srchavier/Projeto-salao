@@ -36,7 +36,7 @@ public class ControleLogin implements Serializable {
 			UtilMensagens.mensagemInformacao("Login efetuado com sucesso!");
 			return "/private/index?faces-redirect=true";
 		} else {
-			UtilMensagens.mensagemErro("Login nao efetuado com sucesso" + " Usuario ou senha invalidos!");
+			UtilMensagens.mensagemErro("Login nao efetuado com sucesso" + " usuario ou senha invalidos!");
 			return "/login";
 		}
 

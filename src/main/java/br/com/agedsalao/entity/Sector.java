@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
@@ -12,7 +13,8 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 public class Sector extends AbstractPersistable<Long> {
 
 	@NotEmpty(message ="Setor nao pode ser nulo")
-	@Column(name="NOME" ,nullable = false,length=100)
+	@Length(min=5 ,max =30)
+	@Column(name="NOME" ,nullable = false,length=50)
 	private String nome;
 
 	public String getNome() {

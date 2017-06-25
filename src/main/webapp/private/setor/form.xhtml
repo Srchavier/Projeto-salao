@@ -5,16 +5,18 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-	
+
 	<ui:define name="content">
 		<h1>Novo Setor</h1>
-		<h:form>
+		<h:form id="Cadastro">
 			<p:growl id="messages" showDetail="true" />
 			<p:panelGrid columns="2">
 				<p:outputLabel value="Nome" />
-				<p:inputText value="#{setorBean.objeto.nome}" />
+				<p:inputText value="#{setorBean.objeto.nome}" required="true"
+					requiredMessage="Campo é obrigatório."
+					validatorMessage="Informe o seu nome de 5 a 30 caracteres."  />
 				<p:commandButton value="Cancelar" action="#{setorBean.cancel()}" />
-				<p:commandButton value="Salvar" action="#{setorBean.save}" />
+				<p:commandButton value="Salvar" action="#{setorBean.save}"  update="Cadastro"/>
 			</p:panelGrid>
 		</h:form>
 	</ui:define>
