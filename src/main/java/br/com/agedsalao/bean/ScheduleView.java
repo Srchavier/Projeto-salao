@@ -5,13 +5,10 @@ import java.text.ParseException;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
-import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DefaultScheduleModel;
 import org.primefaces.model.ScheduleEvent;
@@ -24,6 +21,7 @@ import br.com.agedsalao.dao.agendamentoDAO;
 import br.com.agedsalao.entity.Agendamento;
 import br.com.agedsalao.entity.AgendamentoSchedule;
 import br.com.agedsalao.entity.Person;
+import br.com.agedsalao.util.UtilMensagens;
 
 @ManagedBean
 @ViewScoped
@@ -76,7 +74,7 @@ public class ScheduleView implements Serializable {
 			for (ScheduleEvent eventoAux : eventModel.getEvents()) {
 				if (eventoAux.getStartDate().compareTo(event.getStartDate()) == 0) {
 					if (((AgendamentoSchedule) eventoAux).getPerson().equals(((AgendamentoSchedule) event).getPerson())) {
-						addMessage(new FacesMessage("Ja existe horario!"));
+						UtilMensagens.mensagemErro("Já existe horario!");
 						return;
 					}
 				}
@@ -88,7 +86,6 @@ public class ScheduleView implements Serializable {
 			agendamento = ScheduleEventConverter.getConverter().toAgendamento((AgendamentoSchedule) event);
 			agendamentoDAO.save(agendamento);
 		}
-		addMessage(new FacesMessage("Evento salvo com sucesso!"));
 
 		agendamento = new Agendamento();
 		event = new AgendamentoSchedule();
@@ -110,9 +107,9 @@ public class ScheduleView implements Serializable {
 			agendamento = ScheduleEventConverter.getConverter().toAgendamento((AgendamentoSchedule) event);
 			agendamentoDAO.delete(agendamento.getId());
 		} else {
-			addMessage(new FacesMessage("Nao existe regristo"));
+			UtilMensagens.mensagemInformacao("Nao existe regristo");
 		}
-		addMessage(new FacesMessage("Excluído com sucesso!"));
+		UtilMensagens.mensagemInformacao("Excluído com sucesso!");
 		buscarTodos();
 	}
 
@@ -124,9 +121,6 @@ public class ScheduleView implements Serializable {
 		event = (AgendamentoSchedule) selectEvent.getObject();
 	}
 
-	private void addMessage(FacesMessage message) {
-		FacesContext.getCurrentInstance().addMessage(null, message);
-	}
 
 	public ConverterPerson getConvertPerson() {
 		return convertPerson;

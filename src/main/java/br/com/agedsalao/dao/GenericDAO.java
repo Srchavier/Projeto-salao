@@ -13,12 +13,13 @@ import br.com.agedsalao.util.UtilErros;
 import br.com.agedsalao.util.UtilMensagens;
 
 /**
- * @author Eduardo abstract porque nao quero q ela seja instancianda so e
- *         herdanda
+ * @author Eduardo
+ *
  * @param <t>
- *            Serializable classe de entidade tem q ser sempre Serializable
+ * abstract porque nao quero q ela seja instancianda so e herdanda
+ * Serializable classe de entidade tem q ser sempre Serializable
+ * 
  */
-
 public abstract class GenericDAO<T extends Serializable> {
 
 	/**
@@ -65,7 +66,7 @@ public abstract class GenericDAO<T extends Serializable> {
 				
 			}
 			manager.getTransaction().commit();// vamos commint a transaçao
-			UtilMensagens.mensagemInformacao(" sucesso!");
+			UtilMensagens.mensagemInformacao("Salvo com sucesso!");
 			return true;
 		} catch (Exception e) {
 			if (manager.getTransaction().isActive() == false) {
@@ -91,7 +92,7 @@ public abstract class GenericDAO<T extends Serializable> {
 				manager.getTransaction().begin();
 			}
 			manager.getTransaction().rollback();
-			UtilMensagens.mensagemErro("Erro ao remover grupo" + UtilErros.getMensagemErro(e));
+			UtilMensagens.mensagemErro("Erro ao remover" + UtilErros.getMensagemErro(e));
 			return false;
 		}
 	}
@@ -99,7 +100,7 @@ public abstract class GenericDAO<T extends Serializable> {
 	public void delete(Long id) {
 		EntityManager manager = getEntityManager();// chama o metodo de cima
 													// passa o objeto ja criando
-													// do tipo entyttimanager
+													// do tipo EntityManager
 		manager.getTransaction().begin();// inicia a transaçao
 		// esse metodo busca todo o
 		// conteudo//manager.remove(manager.find(aClass, id));//temos q passa
@@ -128,6 +129,32 @@ public abstract class GenericDAO<T extends Serializable> {
 		manager.close();// encerra e libera da memoria
 	}
 
+	public Person login(String nomeUsuario, String senha) {
+		EntityManager manager = getEntityManager();
+		manager.getTransaction().begin();
+		try {
+			Person pessoa = manager
+					.createQuery("from Person p where p.nomeUsuario= :nomeUsuario and p.senha = :senha", Person.class)
+					.setParameter("nomeUsuario", nomeUsuario.toUpperCase()).setParameter("senha", senha.toUpperCase())
+					.getSingleResult();
+			pessoa.setSenha("");
+			return pessoa;
+		} catch (NoResultException e) {
+			manager.getTransaction().rollback();
+			return null;
+		}
+	}
+
+	public Person findByLocalizaAndEmai(String email) {
+		EntityManager manager = getEntityManager();
+		manager.getTransaction().begin();
+
+		return (Person) manager.createQuery("from Person p where p.email = :email ")
+				.setParameter("email", email.toUpperCase()).getSingleResult();
+
+	}
+
+	
 	/**
 	 * consulta id findbyid para consulta por id para retorna um unico objeto.
 	 */
@@ -238,28 +265,5 @@ public abstract class GenericDAO<T extends Serializable> {
 		return count;
 	}
 
-	public Person login(String nomeUsuario, String senha) {
-		EntityManager manager = getEntityManager();
-		manager.getTransaction().begin();
-		try {
-			Person pessoa = manager
-					.createQuery("from Person p where p.nomeUsuario= :nomeUsuario and p.senha = :senha", Person.class)
-					.setParameter("nomeUsuario", nomeUsuario.toUpperCase()).setParameter("senha", senha.toUpperCase())
-					.getSingleResult();
-			pessoa.setSenha("");
-			return pessoa;
-		} catch (NoResultException e) {
-			return null;
-		}
-	}
-
-	public Person findByLocalizaAndEmai(String email) {
-		EntityManager manager = getEntityManager();
-		manager.getTransaction().begin();
-
-		return (Person) manager.createQuery("from Person p where p.email = :email ")
-				.setParameter("email", email.toUpperCase()).getSingleResult();
-
-	}
 
 }

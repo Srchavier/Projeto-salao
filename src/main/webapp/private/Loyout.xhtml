@@ -26,13 +26,13 @@
 							<p:menuitem value="Agendamento" outcome="/private/index.xhtml"
 								icon="ui-icon-home" />
 							<p:menuitem value="Cadastro Funcionario" 
-								url="/private/employee/cadastroPessoa.xhtml" icon="ui-icon-star" />
+								url="/private/employee/cadastroPessoa.xhtml" icon="ui-icon-star" rendered="#{controleLogin.usuarioLogado.setor.nome == 'Administrativo'}"/>
 							<p:menuitem value="Lista funcionarios"
-								url="/private/employee/listar.xhtml" icon="ui-icon-star" />
+								url="/private/employee/listar.xhtml" icon="ui-icon-star" rendered="#{controleLogin.usuarioLogado.setor.nome == 'Administrativo'}" />
 							<p:menuitem value="Lista setores"
-								url="/private/setor/listar.xhtml" icon="ui-icon-star" />
+								url="/private/setor/listar.xhtml" icon="ui-icon-star" rendered="#{controleLogin.usuarioLogado.setor.nome == 'Administrativo'}" />
 							<p:menuitem value="Sair"
-								action="#{controleLogin.efetuarLogout()}" icon="ui-icon-star" />
+								action="#{controleLogin.efetuarLogout()}" icon="ui-icon-star"/>
 						</p:submenu>
 					</p:menu>
 				</h:form>

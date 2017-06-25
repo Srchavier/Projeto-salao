@@ -9,9 +9,8 @@
 	<ui:define name="content">
 
 		<h:form>
-			<p:messages id="messages" showDetail="false" showSummary="true"
-				autoUpdate="true" />
-			<h:panelGrid columnClasses="value" id="atualizar">
+			<p:growl id="messages" showDetail="true" />
+			<h:panelGrid columnClasses="value" >
 				<h3 style="margin-top: 0">Agenda</h3>
 
 				<p:commandButton value="Adicionar um Agedamento"
@@ -68,7 +67,7 @@
 					<p:commandButton value="Excluir"
 						actionListener="#{scheduleView.excluir}"
 						oncomplete="PF('myschedule').update();PF('eventDialog').hide();"
-						update="atualizar messages" />
+						update="messages" />
 					<p:commandButton id="addButton" value="Marca"
 						actionListener="#{scheduleView.addEvent}"
 						oncomplete="PF('myschedule').update();PF('eventDialog').hide();"
