@@ -21,7 +21,7 @@ import br.com.agedsalao.util.UtilMensagens;
 
 @ManagedBean(name = "CadastroBean")
 @ViewScoped
-public class funcionarioBean {
+public class FuncionarioBean {
 	private Person person;
 	private Sector sector;
 	private PersonDAO personDAO;
@@ -29,7 +29,7 @@ public class funcionarioBean {
 	private SectorDAO sectorDAO;
 	private ConverterSector converterSector;
 
-	public funcionarioBean() {
+	public FuncionarioBean() {
 		personDAO = new PersonDAO();
 		this.person = new Person();
 		this.sector = new Sector();
@@ -41,9 +41,9 @@ public class funcionarioBean {
 		person.setDataCadastro(LocalDate.now());
 		
 		if (personDAO.save(person)) {
-			return "listar";
+			return "listarFunc";
 		} else {
-			return "cadastroPessoa";
+			return "cadastroFunc";
 		}
 
 	}
@@ -53,25 +53,25 @@ public class funcionarioBean {
 	
 	public String novo() {
 		person = new Person();
-		return "/employee/cadastroPessoa";
+		return "/employee/cadastroFunc";
 
 	}
 
 	public String list() {
-		return "/private/employee/listar?faces-redirect=true";
+		return "/private/employee/listarFunc?faces-redirect=true";
 	}
 
 	public String alterar(Person obj) {
 		person = obj;
-		return "cadastroPessoa";
+		return "cadastroFunc";
 	}
 
 	public String excluir(Person obj) {
 		personDAO.excluir(obj);
-		return "/private/employee/listar";
+		return "/private/employee/listarFunc";
 	}
 	public String cancelar(){
-		return "listar";
+		return "/private/employee/listarFunc?faces-redirect=true";
 	}
 
 

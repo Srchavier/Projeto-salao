@@ -17,7 +17,7 @@ import org.primefaces.model.ScheduleModel;
 import br.com.agedsalao.convert.ConverterPerson;
 import br.com.agedsalao.convert.ScheduleEventConverter;
 import br.com.agedsalao.dao.PersonDAO;
-import br.com.agedsalao.dao.agendamentoDAO;
+import br.com.agedsalao.dao.AgendamentoDAO;
 import br.com.agedsalao.entity.Agendamento;
 import br.com.agedsalao.entity.AgendamentoSchedule;
 import br.com.agedsalao.entity.Person;
@@ -39,14 +39,14 @@ public class ScheduleView implements Serializable {
 
 	private List<AgendamentoSchedule> agenda;
 
-	private agendamentoDAO agendamentoDAO;
+	private AgendamentoDAO agendamentoDAO;
 
 	private PersonDAO personDAO;
 
 	@PostConstruct
 	public void init() {
 		eventModel = new DefaultScheduleModel();
-		agendamentoDAO = new agendamentoDAO();
+		agendamentoDAO = new AgendamentoDAO();
 		personDAO = new PersonDAO();
 		convertPerson = new ConverterPerson();
 		buscarTodos();

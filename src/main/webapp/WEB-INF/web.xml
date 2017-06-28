@@ -22,10 +22,13 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>FiltroSeguranca</filter-name>
-		<url-pattern>/private/s*</url-pattern>
+		<url-pattern>/private/*</url-pattern>
 	</filter-mapping>
-	
+	<session-config>
+		<session-timeout>60</session-timeout>
+	</session-config>
+
 	<welcome-file-list>
-          <welcome-file>/login.xhtml</welcome-file>
-      </welcome-file-list>
+		<welcome-file>login.xhtml</welcome-file>
+	</welcome-file-list>
 </web-app>

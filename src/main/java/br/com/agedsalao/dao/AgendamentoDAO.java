@@ -13,9 +13,9 @@ import br.com.agedsalao.entity.AgendamentoSchedule;
 import br.com.agedsalao.entity.Person;
 import br.com.agedsalao.filtresegurance.SessionContext;
 
-public class agendamentoDAO extends GenericDAO<Agendamento> {
+public class AgendamentoDAO extends GenericDAO<Agendamento> {
 
-	public agendamentoDAO() {
+	public AgendamentoDAO() {
 		super(Agendamento.class);
 	}
 

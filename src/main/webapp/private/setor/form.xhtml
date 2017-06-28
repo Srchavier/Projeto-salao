@@ -15,7 +15,7 @@
 				<p:inputText value="#{setorBean.objeto.nome}" required="true"
 					requiredMessage="Campo é obrigatório."
 					validatorMessage="Informe o seu nome de 5 a 30 caracteres."  />
-				<p:commandButton value="Cancelar" action="#{setorBean.cancel()}" />
+				<p:commandButton value="Cancelar" action="#{setorBean.cancel}" />
 				<p:commandButton value="Salvar" action="#{setorBean.save}"  update="Cadastro"/>
 			</p:panelGrid>
 		</h:form>
