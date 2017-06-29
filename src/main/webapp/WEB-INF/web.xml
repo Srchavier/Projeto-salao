@@ -29,12 +29,7 @@
 	</session-config>
 
 	<welcome-file-list>
-<<<<<<< HEAD
 		<welcome-file>login.xhtml</welcome-file>
 	</welcome-file-list>
+
 </web-app>
-=======
-          <welcome-file>/login.xhtml</welcome-file>
-      </welcome-file-list>
-</web-app>
->>>>>>> origin/master
